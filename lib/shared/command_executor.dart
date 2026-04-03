@@ -1,8 +1,11 @@
 import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+
 import '../core/connection.dart';
 import '../core/interfaces.dart';
-import 'command.dart';
 import 'app_events.dart';
+import 'command.dart';
 
 class CommandExecutor {
   final IConnection _connection;
@@ -12,7 +15,7 @@ class CommandExecutor {
 
   Future<bool> execute(Command command) async {
     if (!command.validate()) {
-      print('Command validation failed: ${command.name} = ${command.value}');
+      debugPrint('Command validation failed: ${command.name} = ${command.value}');
       return false;
     }
 
@@ -35,7 +38,7 @@ class CommandExecutor {
         return result;
       } catch (e) {
         _eventBus.unsubscribe<CommandAcknowledgedEvent>(handler);
-        print('Attempt ${attempt + 1} failed: timeout');
+        debugPrint('Attempt ${attempt + 1} failed: timeout');
       }
     }
     return false;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'shared/di_container.dart';
+
 import 'features/generator/generator.dart';
+import 'shared/di_container.dart';
 
 void main() {
   setupDependencies();

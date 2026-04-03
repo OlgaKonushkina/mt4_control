@@ -1,7 +1,6 @@
 import '../../../core/interfaces.dart';
-import '../../../shared/base_controller.dart';
-import '../../../shared/event_bus.dart';
 import '../../../shared/app_events.dart';
+import '../../../shared/base_controller.dart';
 import '../services/generator_service.dart';
 
 class GeneratorController extends BaseController {
@@ -17,29 +16,23 @@ class GeneratorController extends BaseController {
 
   double get frequency => _frequency;
 
-void setFrequency(double value) async {
-  if ((value - _frequency).abs() > 0.0001) {
-    savePrev('frequency', _frequency);
-    _frequency = value;
-    notifyListeners();
-    final success = await _service.setFrequency(value);
-    if (!success) {
-      // Восстановить предыдущее значение при ошибке
-      _frequency = getPrev('frequency') ?? _frequency;
+  void setFrequency(double value) async {
+    if ((value - _frequency).abs() > 0.0001) {
+      savePrev('frequency', _frequency);
+      _frequency = value;
       notifyListeners();
+      final success = await _service.setFrequency(value);
+      if (!success) {
+        _frequency = getPrev('frequency') ?? _frequency;
+        notifyListeners();
+      }
     }
   }
-}
 
   void _onFrequencyChanged(GeneratorFrequencyChangedEvent event) {
     if ((event.value - _frequency).abs() > 0.0001) {
       _frequency = event.value;
       notifyListeners();
     }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

@@ -1,9 +1,10 @@
 import 'package:get_it/get_it.dart';
-import 'event_bus.dart';
-import 'command_executor.dart';
-import '../core/interfaces.dart';
+
 import '../core/connection.dart';
+import '../core/interfaces.dart';
 import '../features/generator/generator.dart';
+import 'command_executor.dart';
+import 'event_bus.dart';
 
 final getIt = GetIt.instance;
 

@@ -1,5 +1,3 @@
-import '../core/interfaces.dart';
-
 abstract class AppEvent {
   const AppEvent();
 }
