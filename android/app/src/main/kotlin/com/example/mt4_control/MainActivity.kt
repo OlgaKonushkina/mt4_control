@@ -1,5 +1,6 @@
-package com.example.mt4_control
+package com.example.mt4_control;
 
-import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.android.FlutterActivity;
 
-class MainActivity : FlutterActivity()
+public class MainActivity extends FlutterActivity {
+}
