@@ -1,8 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mt4_control">
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
-    
     <application
         android:label="mt4_control"
         android:name="${applicationName}"
