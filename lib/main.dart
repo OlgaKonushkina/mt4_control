@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'core/connection_factory.dart';
 import 'features/generator/generator.dart';
 import 'shared/di_container.dart';
 
 void main() {
-  setupDependencies();
+  setupDependencies(type: ConnectionType.mock); // поменяй на serial или ethernet при необходимости
   runApp(const MyApp());
 }
 

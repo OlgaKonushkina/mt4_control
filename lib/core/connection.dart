@@ -15,12 +15,10 @@ class MockConnection implements IConnection {
   }
 
   @override
-  void disconnect() {
-  }
+  void disconnect() {}
 
   @override
   void sendCommand(String command, dynamic value) {
-    // Имитируем получение подтверждения от устройства
     Future.delayed(const Duration(milliseconds: 100), () {
       eventBus.fire(CommandAcknowledgedEvent('OK $command $value'));
     });
